@@ -15,6 +15,9 @@ function Navigation() {
         height="50px"
         width="50px"
       />
+      <h3>
+        <Link to={`/search`}>Add cards to your binder</Link>
+      </h3>
     </div>
   );
 }
