@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/Header";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import { UserContext } from "./components/UserContext";
 
 function App() {
+  const [user, setUser] = useState({
+    username: "Guest",
+    avatar_url:
+      "https://images.macrumors.com/t/n4CqVR2eujJL-GkUPhv1oao_PmI=/1600x/article-new/2019/04/guest-user-250x250.jpg",
+    kudos: 0,
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <UserContext.Provider value={{ userKey: [user, setUser] }}>
+        <div className="App">
+          <Header />
+          <br />
+          <Routes>
+            <Route path="/" element={<Navigation />}></Route>
+          </Routes>
+        </div>
+      </UserContext.Provider>
+    </BrowserRouter>
   );
 }
 
