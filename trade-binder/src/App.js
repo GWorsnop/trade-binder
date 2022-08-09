@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Navigation from "./components/Navigation";
 import CardSearch from "./components/CardSearch";
 import ProfilePage from "./components/ProfilePage";
+import Tradebinder from "./components/tradebinder";
 
 function App() {
   const [user, setUser] = useState({
@@ -25,6 +26,7 @@ function App() {
             <Route path="/" element={<Navigation />}></Route>
             <Route path="/search" element={<CardSearch />}></Route>
             <Route path="/profile" element={<ProfilePage />}></Route>
+            <Route path="/tradebinder" element={<Tradebinder />}></Route>
           </Routes>
         </div>
       </UserContext.Provider>

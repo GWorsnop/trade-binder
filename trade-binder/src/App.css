@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+#table {
+  margin-left: auto;
+  margin-right: auto;
+  width:750px;
+}
+
+.profile {
+  border-radius: 50%;
+}
+
+.binder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  border-radius: 10px;
+}

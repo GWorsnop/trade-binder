@@ -3,21 +3,19 @@ import { useContext } from "react";
 import { UserContext } from "./UserContext";
 
 function Navigation() {
-  const { userKey } = useContext(UserContext);
-  const [user, setUser] = userKey;
+  const { user, setUser } = useContext(UserContext);
 
   return (
     <div>
       <h3>Hello {user.username}</h3>
       <img
+        className="profile"
         src={user.avatar_url}
         alt={user.username}
-        height="50px"
-        width="50px"
+        height="100px"
+        width="100px"
       />
-      <h3>
-        <Link to={`/search`}>Add cards to your binder</Link>
-      </h3>
+      <h3></h3>
     </div>
   );
 }

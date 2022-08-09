@@ -1,15 +1,21 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "./UserContext";
+import addCard from "./api-interaction/addCard";
 
 export default function CardSearch() {
+  const { user, setUser } = useContext(UserContext);
   const [getSuccessfulCheck, SetGetSuccessful] = useState(
     "Item Search: Pending"
   );
-
+  const [postSuccessful, SetPostSuccessful] = useState(null);
   const [cardName, SetCardName] = useState("");
   const [cardSet, SetCardSet] = useState("");
   const [isFoil, SetIsFoil] = useState(false);
   const [quantity, SetQuantity] = useState(1);
+  const [price, setPrice] = useState(0);
+  const [image, setImage] = useState("");
   const [error, setErr] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState({
@@ -30,17 +36,19 @@ export default function CardSearch() {
         },
       })
       .then((res) => {
-        return res;
-      })
-      .then((res) => {
         setResult(res.data);
+        SetCardName(res.data.name);
+        setImage(res.data.image_uris.small);
+        setPrice(Number(res.data.prices.eur * 100));
         SetGetSuccessful("Item Search: Submitted!");
+        SetPostSuccessful(null);
       })
       .catch((err) => {
-        SetGetSuccessful("Item Submission: Failed.");
+        SetGetSuccessful("Item Search: Failed.");
         setErr(err.message);
       });
   };
+
   return (
     <div className="card-search">
       <form onSubmit={handleSubmit}>
@@ -68,19 +76,6 @@ export default function CardSearch() {
           />
         </label>
         <br />
-        <label id="itemCategory">
-          Foil:
-          <select
-            value={isFoil}
-            onChange={(event) => {
-              SetIsFoil(event.target.value);
-            }}
-          >
-            <option value={true}>Yes</option>
-            <option value={false}>No</option>
-          </select>
-        </label>
-        <br />
         <label>
           Quantity
           <input
@@ -98,22 +93,43 @@ export default function CardSearch() {
           onClick={() => {
             SetCardName("");
             SetCardSet("");
+            setPrice(0);
+            setImage("");
             SetIsFoil(false);
             SetQuantity(1);
+            SetPostSuccessful(null);
           }}
         >
           Reset
         </button>
-        <button type="submit">Submit</button>
+        <button type="submit">Search</button>
       </form>
       <hr />
       <p>{getSuccessfulCheck}</p>
       <p>{error}</p>
       <h3>Card Found</h3>
       <p>{result.name}</p>
-      <p>Price: €{result.prices.eur}</p>
-      <p>Foil: {isFoil}</p>
-      <img src={result.image_uris.small} alt={result.name} />
+      <p>Price: €{price / 100}</p>
+      <p>Quantity: {quantity}</p>
+      <img src={image} alt={cardName} />
+      <p>{postSuccessful}</p>
+      <b />
+      <button
+        type="submit"
+        onClick={(e) => {
+          e.preventDefault();
+          if (user.username === "Guest") {
+            SetPostSuccessful(
+              "You must be logged in to add a card to your binder!"
+            );
+          } else {
+            addCard(cardName, price, quantity, image, user.username);
+            SetPostSuccessful("Card added to binder!");
+          }
+        }}
+      >
+        Add to Binder
+      </button>
     </div>
   );
 }

@@ -32,6 +32,7 @@ function ProfilePage() {
             <li key={user.username}>
               <h3>{user.username}</h3>
               <img
+                className="profile"
                 src={user.avatar_url}
                 alt={user.username}
                 height="100px"
@@ -49,6 +50,7 @@ function ProfilePage() {
             <li key={user.username}>
               <h3>{user.username}</h3>
               <img
+                className="profile"
                 src={user.avatar_url}
                 alt={user.username}
                 height="100px"
