@@ -3,10 +3,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import { UserContext } from "./components/UserContext";
 import Header from "./components/Header";
-import Navigation from "./components/Navigation";
 import CardSearch from "./components/CardSearch";
 import ProfilePage from "./components/ProfilePage";
 import Tradebinder from "./components/tradebinder";
+import Friends from "./components/friends";
+import OthersBinder from "./components/othersBinder";
 
 function App() {
   const [user, setUser] = useState({
@@ -23,10 +24,26 @@ function App() {
           <Header />
           <br />
           <Routes>
-            <Route path="/" element={<Navigation />}></Route>
+            <Route path="/" element={<Tradebinder />}></Route>
             <Route path="/search" element={<CardSearch />}></Route>
             <Route path="/profile" element={<ProfilePage />}></Route>
-            <Route path="/tradebinder" element={<Tradebinder />}></Route>
+            <Route path="/friends" element={<Friends />}></Route>
+            <Route
+              path="/friends/GWorsnop"
+              element={<OthersBinder usersBinder="GWorsnop" />}
+            ></Route>
+            <Route
+              path="/friends/Brazzled"
+              element={<OthersBinder usersBinder="Brazzled" />}
+            ></Route>
+            <Route
+              path="/friends/Gibbo"
+              element={<OthersBinder usersBinder="Gibbo" />}
+            ></Route>
+            <Route
+              path="/friends/Spanga"
+              element={<OthersBinder usersBinder="Spanga" />}
+            ></Route>
           </Routes>
         </div>
       </UserContext.Provider>

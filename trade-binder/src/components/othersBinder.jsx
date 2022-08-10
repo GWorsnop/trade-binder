@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Table from "./table";
+import OthersTable from "./othersTable";
 import { useContext } from "react";
 import { UserContext } from "./UserContext";
 import Buttons from "./buttons";
 import Binder from "./binder";
 
-function Tradebinder() {
+function OthersBinder(props) {
+  const { usersBinder } = props;
   const { user, setUser } = useContext(UserContext);
   const [cards, setCards] = useState([]);
   const [queriedCategory, setQueryCategory] = useState(null);
@@ -19,7 +20,7 @@ function Tradebinder() {
     setIsLoading(true);
     axios
       .get(
-        `https://gworsnop-trade-binder.herokuapp.com/api/cards/${user.username}`
+        `https://gworsnop-trade-binder.herokuapp.com/api/cards/${usersBinder}`
       )
       .then((res) => {
         setCards(res.data.cards);
@@ -34,38 +35,16 @@ function Tradebinder() {
         <p className="loader"></p>
       </div>
     );
-  } else if (user.username === "Guest") {
-    return (
-      <div>
-        <h3>Hello {user.username}</h3>
-        <img
-          className="profile"
-          src={user.avatar_url}
-          alt={user.username}
-          height="100px"
-          width="100px"
-        />
-        <h3>Please log in to create and view your trade-binder.</h3>
-      </div>
-    );
   } else
     return (
       <div>
-        <h3>Hello {user.username}</h3>
-        <img
-          className="profile"
-          src={user.avatar_url}
-          alt={user.username}
-          height="100px"
-          width="100px"
-        />
-        <h3>Your Trade-Binder:</h3>
-        <Table id="binder" cards={cards} setIsDeleted={setIsDeleted} />
+        <h3>{usersBinder}'s Trade-Binder:</h3>
+        <OthersTable id="binder" cards={cards} setIsDeleted={setIsDeleted} />
       </div>
     );
 }
 
-export default Tradebinder;
+export default OthersBinder;
 
 /* <Buttons
 setQueryCategory={setQueryCategory}

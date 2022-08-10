@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { UserContext } from "./UserContext";
 import changeQuantity from "./api-interaction/changeQuantity";
 
-function Table(props) {
+function OthersTable(props) {
   const { cards, setIsDeleted } = props;
   const { user, setUser } = useContext(UserContext);
 
@@ -30,23 +30,15 @@ function Table(props) {
                   <br />
                   <button
                     onClick={(e) => {
-                      e.preventDefault();
-                      changeQuantity(1, item.card_id);
-                    }}
-                  >
-                    Increase quantity
-                  </button>
-                  <button
-                    onClick={(e) => {
                       if (item.quantity > 0) {
                         e.preventDefault();
-                        changeQuantity(-1, item.card_id);
+                        // to be added
                       } else {
                         e.preventDefault();
                       }
                     }}
                   >
-                    Decrease quantity
+                    Request to Trade
                   </button>
                   <br />
                   <p></p>
@@ -60,4 +52,4 @@ function Table(props) {
   );
 }
 
-export default Table;
+export default OthersTable;
