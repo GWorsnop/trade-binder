@@ -40,7 +40,8 @@
 #table {
   margin-left: auto;
   margin-right: auto;
-  width:750px;
+  width:100%;
+  display: inline-block
 }
 
 .profile {
@@ -51,6 +52,23 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-
   border-radius: 10px;
+}
+
+.hidden {
+  overflow: hidden;
+}
+
+th {
+  display: inline-block;
+  text-align: center;
+}
+
+td {
+  display: inline-block;
+  width: 240px;
+}
+
+.bottomButton {
+  border-bottom: 5px;
 }

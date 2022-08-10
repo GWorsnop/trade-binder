@@ -7,17 +7,25 @@ function Binder(props) {
   const { user, setUser } = useContext(UserContext);
 
   return (
-    <div className="binder">
+    <div
+      className="binder"
+      width="1200"
+      border="0"
+      cellPadding="0"
+      cellSpacing="0"
+      colSpan={5}
+    >
       {cards.map((item) => {
         return (
-          <div key={item.item_id}>
+          <div key={item.item_id} valign="top">
             <p>{item.name}</p>
             <img
               className="image"
+              width="240px"
+              align="left"
+              hspace="0"
               src={item.image}
               alt={item.name}
-              height="100px"
-              width="75px"
             ></img>
             <p>Quantity: {item.quantity}</p>
             <p>€{item.price / 100}</p>

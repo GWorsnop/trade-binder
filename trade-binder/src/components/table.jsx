@@ -7,46 +7,34 @@ function Table(props) {
   const { user, setUser } = useContext(UserContext);
 
   return (
-    <div>
+    <div className="hidden">
       <hr />
-      <table id="table">
-        <thead id="header">
-          <tr id="items-row-names">
-            <th>Card Name:</th>
-            <th>Image:</th>
-            <th>Quantity:</th>
-            <th>Price:</th>
-            <th>Trade:</th>
-          </tr>
-        </thead>
+      <table id="table" width="1200" border="0" cellPadding="0" cellSpacing="0">
         <tbody id="table-body">
-          {cards.map((item) => {
-            return (
-              <tr key={item.card_id}>
-                <th>{item.name}</th>
-                <th>
+          <tr>
+            {cards.map((item) => {
+              return (
+                <td key={item.item_id}>
                   <img
                     className="image"
+                    width="240px"
+                    align="left"
+                    hspace="0"
                     src={item.image}
                     alt={item.name}
-                    height="100px"
-                    width="75px"
                   ></img>
-                </th>
-                <th>{item.quantity}</th>
-                <th>€{item.price / 100}</th>
-                <th>
-                  <button
-                    onClick={() => {
-                      // orderItem(user.username, item.item_id);
-                    }}
-                  >
-                    Delete item
-                  </button>
-                </th>
-              </tr>
-            );
-          })}
+                  <td>
+                    Value: €{item.price / 100} | Quantity: {item.quantity}{" "}
+                  </td>
+                  <br />
+                  <button>Delete</button>
+                  <button className="bottomButtom">Change Quantity</button>
+                  <br />
+                  <p></p>
+                </td>
+              );
+            })}
+          </tr>
         </tbody>
       </table>
     </div>

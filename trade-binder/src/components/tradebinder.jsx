@@ -37,7 +37,7 @@ function Tradebinder() {
   } else
     return (
       <div>
-        <Binder id="binder" cards={cards} setIsDeleted={setIsDeleted} />
+        <Table id="binder" cards={cards} setIsDeleted={setIsDeleted} />
       </div>
     );
 }
