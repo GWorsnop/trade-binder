@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "./UserContext";
 import changeQuantity from "./api-interaction/changeQuantity";
+import deleteCard from "./api-interaction/deleteCard";
 
 function Table(props) {
   const { cards, setIsDeleted } = props;
@@ -38,11 +38,13 @@ function Table(props) {
                   </button>
                   <button
                     onClick={(e) => {
-                      if (item.quantity > 0) {
+                      if (item.quantity > 1) {
                         e.preventDefault();
                         changeQuantity(-1, item.card_id);
                       } else {
                         e.preventDefault();
+                        setIsDeleted(true);
+                        deleteCard(item.card_id);
                       }
                     }}
                   >

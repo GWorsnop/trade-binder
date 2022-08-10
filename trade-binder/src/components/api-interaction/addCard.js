@@ -10,7 +10,6 @@ export default function addCard(cardName, price, quantity, image, user) {
       username: user,
     })
     .then((res) => {
-      console.log(res);
       return res.data;
     })
     .catch((err) => {
