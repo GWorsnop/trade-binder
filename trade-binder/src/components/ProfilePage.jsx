@@ -25,45 +25,34 @@ function ProfilePage() {
 
   return (
     <div>
-      <h3> Choose your user: </h3>
-      <ul>
-        {guest.map((user, i) => {
-          return (
-            <li key={user.username}>
-              <h3>{user.username}</h3>
-              <img
-                className="profile"
-                src={user.avatar_url}
-                alt={user.username}
-                height="100px"
-                width="100px"
-              />
-              <br />
-              <Link to={`/`}>
-                <button onClick={() => setUser(user)}>Choose User</button>
-              </Link>
-            </li>
-          );
-        })}
+      <h3 className="text-xl font-bold"> Choose your user: </h3>
+      <br />
+      <div className="grid gap-4 grid-cols-4 grid-rows-1 justify-items-center">
         {allUsers.map((user, i) => {
           return (
-            <li key={user.username}>
-              <h3>{user.username}</h3>
+            <div key={user.username} className="w-36 bg-blue-400 rounded-md">
+              <h3 className="text-xl font-semibold text-white">
+                {user.username}
+              </h3>
               <img
-                className="profile"
+                className="profile m-auto"
                 src={user.avatar_url}
                 alt={user.username}
                 height="100px"
                 width="100px"
               />
-              <br />
               <Link to={`/`}>
-                <button onClick={() => setUser(user)}>Choose User</button>
+                <button
+                  className="btn bg-white hover:bg-green-100 text-black text-xs"
+                  onClick={() => setUser(user)}
+                >
+                  Choose User
+                </button>
               </Link>
-            </li>
+            </div>
           );
         })}
-      </ul>
+      </div>
     </div>
   );
 }
