@@ -20,7 +20,7 @@ function App() {
   return (
     <BrowserRouter>
       <UserContext.Provider value={{ user, setUser }}>
-        <div className="App">
+        <div className="app min-h-screen bg-gradient-to-b from-gray-100 to-blue-200">
           <Header />
           <br />
           <Routes>
