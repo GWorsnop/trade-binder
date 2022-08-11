@@ -24,30 +24,37 @@ function Friends() {
 
   return (
     <div>
-      <h3> Friends: </h3>
-      <ul>
+      <h3 className="text-xl font-bold"> Friends: </h3>
+      <br />
+      <div className="grid gap-4 grid-cols-3 grid-rows-1 justify-items-center">
         {allUsers.map((profile, i) => {
           if (profile.username === user.username) {
             return;
           } else
             return (
-              <li key={profile.username}>
-                <h3>{profile.username}</h3>
+              <div
+                key={profile.username}
+                className="w-36 bg-blue-400 rounded-md shadow-md mb-4"
+              >
+                <h3 className="text-xl font-semibold text-white">
+                  {profile.username}
+                </h3>
                 <img
-                  className="profile"
+                  className="profile m-auto"
                   src={profile.avatar_url}
                   alt={profile.username}
                   height="100px"
                   width="100px"
                 />
-                <br />
                 <Link to={`/friends/${profile.username}`}>
-                  <button>Choose User</button>
+                  <button className="btn bg-white hover:bg-green-100 text-black text-xs">
+                    Choose User
+                  </button>
                 </Link>
-              </li>
+              </div>
             );
         })}
-      </ul>
+      </div>
     </div>
   );
 }

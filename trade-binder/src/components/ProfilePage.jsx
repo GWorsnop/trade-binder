@@ -30,7 +30,10 @@ function ProfilePage() {
       <div className="grid gap-4 grid-cols-4 grid-rows-1 justify-items-center">
         {allUsers.map((user, i) => {
           return (
-            <div key={user.username} className="w-36 bg-blue-400 rounded-md">
+            <div
+              key={user.username}
+              className="w-36 bg-blue-400 rounded-md shadow-md mb-4"
+            >
               <h3 className="text-xl font-semibold text-white">
                 {user.username}
               </h3>
