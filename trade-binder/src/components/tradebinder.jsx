@@ -37,30 +37,41 @@ function Tradebinder() {
   } else if (user.username === "Guest") {
     return (
       <div>
-        <h3>Hello {user.username}</h3>
-        <img
-          className="profile"
-          src={user.avatar_url}
-          alt={user.username}
-          height="100px"
-          width="100px"
-        />
+        <h3 className="text-1xl text-black font-semibold">
+          Hello {user.username}
+        </h3>
+        <div className="flex items-center justify-center">
+          <img
+            className="profile object-center"
+            src={user.avatar_url}
+            alt={user.username}
+            height="100px"
+            width="100px"
+          />
+        </div>
         <h3>Please log in to create and view your trade-binder.</h3>
       </div>
     );
   } else
     return (
       <div>
-        <h3>Hello {user.username}</h3>
-        <img
-          className="profile"
-          src={user.avatar_url}
-          alt={user.username}
-          height="100px"
-          width="100px"
-        />
-        <h3>Your Trade-Binder:</h3>
-        <Table id="binder" cards={cards} setIsDeleted={setIsDeleted} />
+        <div className="m-auto">
+          <h3 className="text-2xl text-black font-semibold">{user.username}</h3>
+          <div className="flex items-center justify-center">
+            <img
+              className="profile object-center p-1"
+              src={user.avatar_url}
+              alt={user.username}
+              height="100px"
+              width="100px"
+            />
+          </div>
+        </div>
+        <h3 className="text-1xl text-black font-semibold">
+          Your Trade-Binder:
+        </h3>
+        <br />
+        <Table cards={cards} setIsDeleted={setIsDeleted} />
       </div>
     );
 }

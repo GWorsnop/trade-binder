@@ -8,50 +8,53 @@ function Table(props) {
   const { user, setUser } = useContext(UserContext);
 
   return (
-    <div className="hidden">
+    <div className="flex flex-row justify-center border-r-2 w-screen">
       <hr />
-      <table id="table" width="1200" border="0" cellPadding="0" cellSpacing="0">
-        <tbody id="table-body">
+      <table>
+        <tbody>
           <tr>
             {cards.map((item) => {
               return (
-                <td key={item.item_id}>
+                <td
+                  key={item.item_id}
+                  className="inline-block w-60 text-center"
+                >
                   <img
-                    className="image"
+                    className="image rounded-lg"
                     width="240px"
-                    align="left"
-                    hspace="0"
                     src={item.image}
                     alt={item.name}
                   ></img>
-                  <td>
-                    Value: €{item.price / 100} | Quantity: {item.quantity}
-                  </td>
-                  <br />
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      changeQuantity(1, item.card_id);
-                    }}
-                  >
-                    Increase quantity
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      if (item.quantity > 1) {
+                  <div className="w-60 bg-blue-200 rounded-lg">
+                    <p className="inline-block w-60 text-center font-semibold">
+                      Value: €{item.price / 100} | Quantity: {item.quantity}
+                    </p>
+                    <br />
+                    <button
+                      className="btn bg-green-400 hover:bg-green-500 text-xs"
+                      onClick={(e) => {
                         e.preventDefault();
-                        changeQuantity(-1, item.card_id);
-                      } else {
-                        e.preventDefault();
-                        setIsDeleted(true);
-                        deleteCard(item.card_id);
-                      }
-                    }}
-                  >
-                    Decrease quantity
-                  </button>
-                  <br />
-                  <p></p>
+                        changeQuantity(1, item.card_id);
+                      }}
+                    >
+                      Increase quantity
+                    </button>
+                    <button
+                      className="btn bg-red-400 hover:bg-red-500 text-xs"
+                      onClick={(e) => {
+                        if (item.quantity > 1) {
+                          e.preventDefault();
+                          changeQuantity(-1, item.card_id);
+                        } else {
+                          e.preventDefault();
+                          setIsDeleted(true);
+                          deleteCard(item.card_id);
+                        }
+                      }}
+                    >
+                      Decrease quantity
+                    </button>
+                  </div>
                 </td>
               );
             })}
