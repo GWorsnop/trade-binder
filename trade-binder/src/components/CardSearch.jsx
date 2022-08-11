@@ -1,23 +1,21 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import { UserContext } from "./UserContext";
 import addCard from "./api-interaction/addCard";
 
 export default function CardSearch() {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [getSuccessfulCheck, SetGetSuccessful] = useState(
     "Item Search: Pending..."
   );
   const [postSuccessful, SetPostSuccessful] = useState(null);
   const [cardName, SetCardName] = useState("");
   const [cardSet, SetCardSet] = useState("");
-  const [isFoil, SetIsFoil] = useState(false);
   const [quantity, SetQuantity] = useState(1);
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState("");
   const [error, setErr] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState({
     name: "",
     prices: { eur: 0 },
@@ -25,7 +23,6 @@ export default function CardSearch() {
   });
 
   const handleSubmit = (e) => {
-    setIsLoading(true);
     setErr(null);
     e.preventDefault();
     axios
@@ -110,7 +107,6 @@ export default function CardSearch() {
                 SetCardSet("");
                 setPrice(0);
                 setImage("");
-                SetIsFoil(false);
                 SetQuantity(1);
                 SetGetSuccessful("Item Search: Pending...");
                 SetPostSuccessful(null);

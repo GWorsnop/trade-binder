@@ -1,10 +1,5 @@
-import { useState, useEffect } from "react";
-import { useContext } from "react";
-import { UserContext } from "./UserContext";
-
 function OthersTable(props) {
-  const { cards, setIsDeleted } = props;
-  const { user, setUser } = useContext(UserContext);
+  const { cards } = props;
 
   return (
     <div className="flex flex-row justify-center border-r-2 w-screen">

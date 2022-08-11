@@ -1,11 +1,8 @@
-import { useContext, useEffect } from "react";
-import { UserContext } from "./UserContext";
 import changeQuantity from "./api-interaction/changeQuantity";
 import deleteCard from "./api-interaction/deleteCard";
 
 function Table(props) {
   const { cards, setIsDeleted } = props;
-  const { user, setUser } = useContext(UserContext);
 
   return (
     <div className="flex flex-row justify-center border-r-2 w-screen">

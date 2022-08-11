@@ -6,11 +6,8 @@ import { UserContext } from "./UserContext";
 
 function OthersBinder(props) {
   const { usersBinder } = props;
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [cards, setCards] = useState([]);
-  const [queriedCategory, setQueryCategory] = useState(null);
-  const [sortCategory, setSortCategory] = useState(null);
-  const [order, setOrder] = useState("asc");
   const [isLoading, setIsLoading] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
 
@@ -25,11 +22,15 @@ function OthersBinder(props) {
         setIsLoading(false);
         setIsDeleted(false);
       });
-  }, [queriedCategory, sortCategory, order, isDeleted, user]);
+  }, [isDeleted, user, usersBinder]);
 
   if (isLoading) {
     return (
-      <div className="filters">
+      <div>
+        <h3 className="text-1xl text-black font-semibold">
+          {usersBinder}'s Trade-Binder:
+        </h3>
+        <br />
         <p className="loader"></p>
       </div>
     );

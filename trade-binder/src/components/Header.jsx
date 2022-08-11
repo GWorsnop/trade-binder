@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { UserContext } from "./UserContext";
 
 function Header() {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   let navigate = useNavigate();
 
   if (user.username === "Guest") {
