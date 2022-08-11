@@ -7,7 +7,7 @@ import addCard from "./api-interaction/addCard";
 export default function CardSearch() {
   const { user, setUser } = useContext(UserContext);
   const [getSuccessfulCheck, SetGetSuccessful] = useState(
-    "Item Search: Pending"
+    "Item Search: Pending..."
   );
   const [postSuccessful, SetPostSuccessful] = useState(null);
   const [cardName, SetCardName] = useState("");
@@ -50,86 +50,114 @@ export default function CardSearch() {
   };
 
   return (
-    <div className="card-search">
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name
-          <input
-            onChange={(event) => {
-              SetCardName(event.target.value);
-            }}
-            type="text"
-            name="name"
-            value={cardName}
-          />
-        </label>
-        <br />
-        <label>
-          Set:
-          <input
-            onChange={(event) => {
-              SetCardSet(event.target.value);
-            }}
-            type="text"
-            name="description"
-            value={cardSet}
-          />
-        </label>
-        <br />
-        <label>
-          Quantity
-          <input
-            onChange={(event) => {
-              SetQuantity(event.target.value);
-            }}
-            type="number"
-            name="price"
-            value={quantity}
-          />
-        </label>
-        <br />
-        <button
-          type="reset"
-          onClick={() => {
-            SetCardName("");
-            SetCardSet("");
-            setPrice(0);
-            setImage("");
-            SetIsFoil(false);
-            SetQuantity(1);
-            SetPostSuccessful(null);
-          }}
+    <div className="flex justify-center">
+      <div className="px-8">
+        <form
+          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 h-96"
+          onSubmit={handleSubmit}
         >
-          Reset
-        </button>
-        <button type="submit">Search</button>
-      </form>
-      <hr />
-      <p>{getSuccessfulCheck}</p>
-      <p>{error}</p>
-      <h3>Card Found</h3>
-      <p>{result.name}</p>
-      <p>Price: €{price / 100}</p>
-      <p>Quantity: {quantity}</p>
-      <img src={image} alt={cardName} />
-      <p>{postSuccessful}</p>
-      <b />
-      <button
-        type="submit"
-        onClick={(e) => {
-          e.preventDefault();
-          if (user.username === "Guest") {
-            SetPostSuccessful(
-              "You must be logged in to add a card to your binder!"
-            );
-          } else {
-            addCard(cardName, price, quantity, image, user.username);
-            SetPostSuccessful("Card added to binder!");
-          }
-        }}
-      >
-        Add to Binder
-      </button>
+          <div class="mb-6">
+            <label className="block text-gray-700 text-sm font-bold mb-2 text-left">
+              Name:
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                onChange={(event) => {
+                  SetCardName(event.target.value);
+                }}
+                type="text"
+                name="name"
+                value={cardName}
+              />
+            </label>
+          </div>
+          <div class="mb-6">
+            <label className="block text-gray-700 text-sm font-bold mb-2 text-left">
+              Set:
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                onChange={(event) => {
+                  SetCardSet(event.target.value);
+                }}
+                type="text"
+                name="description"
+                value={cardSet}
+              />
+            </label>
+            <p class="text-gray-600 text-xs italic">
+              Specific set not required, but value may differ.
+            </p>
+          </div>
+          <div class="mb-10">
+            <label className="block text-gray-700 text-sm font-bold mb-4 text-left">
+              Quantity:
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                onChange={(event) => {
+                  SetQuantity(event.target.value);
+                }}
+                type="number"
+                name="price"
+                value={quantity}
+              />
+            </label>
+          </div>
+          <div class="flex items-center justify-between pt-4">
+            <button
+              className="btn bg-gray-400 hover:bg-gray-500 text-xs"
+              type="reset"
+              onClick={() => {
+                SetCardName("");
+                SetCardSet("");
+                setPrice(0);
+                setImage("");
+                SetIsFoil(false);
+                SetQuantity(1);
+                SetGetSuccessful("Item Search: Pending...");
+                SetPostSuccessful(null);
+              }}
+            >
+              Reset
+            </button>
+            <button
+              className="btn bg-green-400 hover:bg-green-500 text-xs"
+              type="submit"
+            >
+              Search
+            </button>
+          </div>
+        </form>
+      </div>
+      <div className="bg-white shadow-md rounded px-8 pt-2 pb-4 mb-4 w-64 h-96">
+        <p>{getSuccessfulCheck}</p>
+        <p>{error}</p>
+        {getSuccessfulCheck === "Item Search: Submitted!" && (
+          <div className="pt-2">
+            <p className="font-bold">{result.name}</p>
+            <img className="m-auto" src={image} alt={cardName} />
+            <p className="font-semibold">Price: €{price / 100}</p>
+            <p className="font-semibold">Quantity: {quantity}</p>
+            <b />
+            <button
+              className="btn bg-green-400 hover:bg-green-500 text-xs"
+              type="submit"
+              onClick={(e) => {
+                e.preventDefault();
+                if (user.username === "Guest") {
+                  SetPostSuccessful(
+                    "You must be logged in to add a card to your binder!"
+                  );
+                } else {
+                  addCard(cardName, price, quantity, image, user.username);
+                  SetPostSuccessful("Card added to binder!");
+                }
+              }}
+            >
+              Add to Binder
+            </button>
+            <p>{postSuccessful}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
