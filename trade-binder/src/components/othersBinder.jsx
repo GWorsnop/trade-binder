@@ -3,8 +3,6 @@ import axios from "axios";
 import OthersTable from "./othersTable";
 import { useContext } from "react";
 import { UserContext } from "./UserContext";
-import Buttons from "./buttons";
-import Binder from "./binder";
 
 function OthersBinder(props) {
   const { usersBinder } = props;
@@ -38,17 +36,13 @@ function OthersBinder(props) {
   } else
     return (
       <div>
-        <h3>{usersBinder}'s Trade-Binder:</h3>
+        <h3 className="text-1xl text-black font-semibold">
+          {usersBinder}'s Trade-Binder:
+        </h3>
+        <br />
         <OthersTable id="binder" cards={cards} setIsDeleted={setIsDeleted} />
       </div>
     );
 }
 
 export default OthersBinder;
-
-/* <Buttons
-setQueryCategory={setQueryCategory}
-setSortCategory={setSortCategory}
-order={order}
-setOrder={setOrder}
-/> */

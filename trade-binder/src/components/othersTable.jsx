@@ -1,47 +1,45 @@
 import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { UserContext } from "./UserContext";
-import changeQuantity from "./api-interaction/changeQuantity";
 
 function OthersTable(props) {
   const { cards, setIsDeleted } = props;
   const { user, setUser } = useContext(UserContext);
 
   return (
-    <div className="hidden">
+    <div className="flex flex-row justify-center border-r-2 w-screen">
       <hr />
-      <table id="table" width="1200" border="0" cellPadding="0" cellSpacing="0">
-        <tbody id="table-body">
+      <table>
+        <tbody>
           <tr>
             {cards.map((item) => {
               return (
-                <td key={item.item_id}>
+                <td
+                  key={item.item_id}
+                  className="inline-block w-60 text-center"
+                >
                   <img
-                    className="image"
+                    className="image rounded-lg"
                     width="240px"
-                    align="left"
-                    hspace="0"
                     src={item.image}
                     alt={item.name}
                   ></img>
-                  <td>
-                    Value: €{item.price / 100} | Quantity: {item.quantity}
-                  </td>
-                  <br />
-                  <button
-                    onClick={(e) => {
-                      if (item.quantity > 0) {
+                  <div className="w-60 bg-blue-200 rounded-lg">
+                    <p className="inline-block w-60 text-center font-semibold">
+                      Value: €{item.price / 100} | Quantity: {item.quantity}
+                    </p>
+                    <br />
+                    <button
+                      className="btn bg-green-400 hover:bg-green-500 text-xs"
+                      onClick={(e) => {
                         e.preventDefault();
-                        // to be added
-                      } else {
-                        e.preventDefault();
-                      }
-                    }}
-                  >
-                    Request to Trade
-                  </button>
+                        // to be added request to trade functionality
+                      }}
+                    >
+                      Request to Trade
+                    </button>
+                  </div>
                   <br />
-                  <p></p>
                 </td>
               );
             })}

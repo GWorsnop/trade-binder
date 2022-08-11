@@ -3,8 +3,6 @@ import axios from "axios";
 import Table from "./table";
 import { useContext } from "react";
 import { UserContext } from "./UserContext";
-import Buttons from "./buttons";
-import Binder from "./binder";
 
 function Tradebinder() {
   const { user, setUser } = useContext(UserContext);
@@ -28,13 +26,7 @@ function Tradebinder() {
       });
   }, [queriedCategory, sortCategory, order, isDeleted, user]);
 
-  if (isLoading) {
-    return (
-      <div className="filters">
-        <p className="loader"></p>
-      </div>
-    );
-  } else if (user.username === "Guest") {
+  if (user.username === "Guest") {
     return (
       <div>
         <h3 className="text-1xl text-black font-semibold">
@@ -50,6 +42,30 @@ function Tradebinder() {
           />
         </div>
         <h3>Please log in to create and view your trade-binder.</h3>
+      </div>
+    );
+  } else if (isLoading) {
+    return (
+      <div>
+        <div className="m-auto">
+          <h3 className="text-2xl text-black font-semibold">{user.username}</h3>
+          <div className="flex items-center justify-center">
+            <img
+              className="profile object-center p-1"
+              src={user.avatar_url}
+              alt={user.username}
+              height="100px"
+              width="100px"
+            />
+          </div>
+        </div>
+        <h3 className="text-1xl text-black font-semibold">
+          Your Trade-Binder:
+        </h3>
+        <br />
+        <div>
+          <p className="loader"></p>
+        </div>
       </div>
     );
   } else
