@@ -14,6 +14,9 @@ function Header() {
         <h2 className="text-2xl text-black font-semibold">
           Gather your collection and share your trade-binder digitally
         </h2>
+        <button className="btn btn-blue" onClick={() => navigate("/about")}>
+          About
+        </button>
         <button className="btn btn-blue" onClick={() => navigate("/profile")}>
           Log in
         </button>
@@ -42,6 +45,9 @@ function Header() {
             src={user.avatar_url}
             alt={user.username}
           />
+          <button className="btn btn-blue" onClick={() => navigate("/about")}>
+            About
+          </button>
           <button className="btn btn-blue" onClick={() => navigate("/profile")}>
             Swap User
           </button>

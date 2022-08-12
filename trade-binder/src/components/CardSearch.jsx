@@ -35,7 +35,7 @@ export default function CardSearch() {
       .then((res) => {
         setResult(res.data);
         SetCardName(res.data.name);
-        setImage(res.data.image_uris.small);
+        setImage(res.data.image_uris.normal);
         setPrice(Number(res.data.prices.eur * 100));
         SetGetSuccessful("Item Search: Submitted!");
         SetPostSuccessful(null);
@@ -53,7 +53,7 @@ export default function CardSearch() {
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 h-96"
           onSubmit={handleSubmit}
         >
-          <div class="mb-6">
+          <div className="mb-6">
             <label className="block text-gray-700 text-sm font-bold mb-2 text-left">
               Name:
               <input
@@ -67,7 +67,7 @@ export default function CardSearch() {
               />
             </label>
           </div>
-          <div class="mb-6">
+          <div className="mb-6">
             <label className="block text-gray-700 text-sm font-bold mb-2 text-left">
               Set:
               <input
@@ -80,11 +80,11 @@ export default function CardSearch() {
                 value={cardSet}
               />
             </label>
-            <p class="text-gray-600 text-xs italic">
+            <p className="text-gray-600 text-xs italic">
               Specific set not required, but value may differ.
             </p>
           </div>
-          <div class="mb-10">
+          <div className="mb-10">
             <label className="block text-gray-700 text-sm font-bold mb-4 text-left">
               Quantity:
               <input
@@ -98,7 +98,7 @@ export default function CardSearch() {
               />
             </label>
           </div>
-          <div class="flex items-center justify-between pt-4">
+          <div className="flex items-center justify-between pt-4">
             <button
               className="btn bg-gray-400 hover:bg-gray-500 text-xs"
               type="reset"
@@ -128,8 +128,11 @@ export default function CardSearch() {
         <p>{error}</p>
         {getSuccessfulCheck === "Item Search: Submitted!" && (
           <div className="pt-2">
-            <p className="font-bold">{result.name}</p>
-            <img className="m-auto" src={image} alt={cardName} />
+            <img
+              className="m-auto h-56 rounded-lg"
+              src={image}
+              alt={cardName}
+            />
             <p className="font-semibold">Price: €{price / 100}</p>
             <p className="font-semibold">Quantity: {quantity}</p>
             <b />

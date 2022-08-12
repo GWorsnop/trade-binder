@@ -8,6 +8,7 @@ import ProfilePage from "./components/ProfilePage";
 import Tradebinder from "./components/tradebinder";
 import Friends from "./components/friends";
 import OthersBinder from "./components/othersBinder";
+import About from "./components/About";
 
 function App() {
   const [user, setUser] = useState({
@@ -25,6 +26,7 @@ function App() {
           <br />
           <Routes>
             <Route path="/" element={<Tradebinder />}></Route>
+            <Route path="/about" element={<About />}></Route>
             <Route path="/search" element={<CardSearch />}></Route>
             <Route path="/profile" element={<ProfilePage />}></Route>
             <Route path="/friends" element={<Friends />}></Route>
