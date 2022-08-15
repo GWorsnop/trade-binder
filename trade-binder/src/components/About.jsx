@@ -22,7 +22,7 @@ function About() {
         <h3 className="text-3xl font-bold">Welcome to Trade-Binder </h3>
         <br />
         <div className="grid gap-4 grid-cols-2 grid-rows-3 justify-items-center">
-          <div className="bg-blue-300 shadow-md rounded px-4 mb-4 w-full h-96 flex flex-col items-center">
+          <div className="bg-blue-300 shadow-md rounded px-4 mb-4 w-full min-h-96 flex flex-col items-center">
             <h2 className="font-bold text-xl py-6 underline">
               What is Trade-Binder?
             </h2>
@@ -50,7 +50,7 @@ function About() {
               </ul>
             </div>
           </div>
-          <div className="bg-blue-200 shadow-md rounded px-4 mb-4 w-full h-96">
+          <div className="bg-blue-200 shadow-md rounded px-4 mb-4 w-full min-h-96">
             <h3 className="py-6 text-xl font-bold underline">
               Behind the Scenes
             </h3>
@@ -72,7 +72,7 @@ function About() {
               database, showing only cards from the user you are logged in as.
             </p>
           </div>
-          <div className="bg-blue-200 shadow-md rounded px-4 mb-4 w-full h-96">
+          <div className="bg-blue-200 shadow-md rounded px-4 mb-4 w-full min-h-96">
             <h3 className="font-bold text-xl py-6 underline"> Tailwind CSS</h3>
             <p className="pb-5">
               I created this project to focus on developing my CSS skills, in
@@ -93,7 +93,7 @@ function About() {
               site.
             </p>
           </div>
-          <div className="bg-blue-300 shadow-md rounded px-4 mb-4 w-full h-96">
+          <div className="bg-blue-300 shadow-md rounded px-4 mb-4 w-full min-h-96">
             <h3 className="font-bold text-xl py-6 underline">React Hooks </h3>
             <p className="pb-5">
               This site utilises React hooks: useState and useEffect that allows
@@ -115,7 +115,7 @@ function About() {
               current user).
             </p>
           </div>
-          <div className="bg-blue-300 shadow-md rounded px-4 mb-4 w-full h-96">
+          <div className="bg-blue-300 shadow-md rounded px-4 mb-4 w-full min-h-96">
             <h3 className="font-bold text-xl py-6 underline">
               How to Interact with this Site
             </h3>
@@ -139,7 +139,7 @@ function About() {
               future it will allow you to contact your friend.
             </p>
           </div>
-          <div className="bg-blue-200 shadow-md rounded mb-4 w-full h-96 flex flex-col items-center">
+          <div className="bg-blue-200 shadow-md rounded mb-4 w-full min-h-96 flex flex-col items-center">
             <div>
               <div className="py-6">
                 <p className="font-semibold ">
