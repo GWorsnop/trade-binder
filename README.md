@@ -2,7 +2,7 @@
 
 ## A virtual replication of a real-world MTG trading card collection that can be sent to friends in order to ease trading.
 
-### Hosted Site - https://gworsnop-mtg-trade-binder.herokuapp.com/
+### Hosted Site - https://trade-binder.netlify.app/about
 
 ---
 
