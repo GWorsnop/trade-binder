@@ -14,9 +14,7 @@ function OthersBinder(props) {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(
-        `https://gworsnop-trade-binder.herokuapp.com/api/cards/${usersBinder}`
-      )
+      .get(`https://trade-binder-backend.onrender.com/api/cards/${usersBinder}`)
       .then((res) => {
         setCards(res.data.cards);
         setIsLoading(false);

@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default function addCard(cardName, price, quantity, image, user) {
   return axios
-    .post(`https://gworsnop-trade-binder.herokuapp.com/api/cards`, {
+    .post(`https://trade-binder-backend.onrender.com/api/cards`, {
       name: cardName,
       price: price,
       quantity: quantity,

@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default function deleteCard(card_id) {
   return axios
-    .delete(`https://gworsnop-trade-binder.herokuapp.com/api/cards/`, {
+    .delete(`https://trade-binder-backend.onrender.com/api/cards`, {
       data: { card_id: card_id },
     })
     .then((res) => {

@@ -14,7 +14,7 @@ function Tradebinder() {
     setIsLoading(true);
     axios
       .get(
-        `https://gworsnop-trade-binder.herokuapp.com/api/cards/${user.username}`
+        `https://trade-binder-backend.onrender.com/api/cards/${user.username}`
       )
       .then((res) => {
         setCards(res.data.cards);
