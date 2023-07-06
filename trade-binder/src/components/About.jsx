@@ -148,7 +148,7 @@ function About() {
                 </p>
               </div>
             </div>
-            <div className="snap-x relative flex gap-6 overflow-x-auto w-3/4">
+            <div className="snap-x relative flex gap-6 overflow-x-auto w-3/4 mb-2">
               <div className="scroll-ml-6 ml-6 snap-start shrink-0 w-52 rounded-lg shadow-xl bg-blue-200">
                 <img
                   className="rounded-lg"
